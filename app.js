@@ -1,33 +1,80 @@
-//Get current time and format
-function formatAMPM(date) {
-  var hours = date.getHours();
-  var minutes = date.getMinutes();
-  var seconds = date.getSeconds();
-  var ampm = hours >= 12 ? 'PM' : 'AM';
-  hours = hours % 12;
-  hours = hours ? hours : 12; // the hour '0' should be '12'
-  minutes = minutes < 10 ? '0'+minutes : minutes;
-  var strTime = hours + ':' + minutes + ':' + seconds + " " + ampm;
-  document.getElementById("time-display").innerHTML = strTime
-}
+//"How can I get my name to show up on the page?"
+  // document.getElementById('time-display').innerHTML = "Tim"
 
-formatAMPM(new Date)
+//"How can I get the current hour to show up on the page?"
+  // document.getElementById('time-display').innerHTML = date.getHours();
 
-// //Increment seconds every one second
-// let seconds
-// function getSecs(date) {
-//   seconds = date.getSeconds();
+//"How can I get the current second to show up on the page?"
+  // document.getElementById('time-display').innerHTML = date.getSeconds();
+
+//"How could I get the current second to show up and tick each second?"
+
+  // function secondIncrement() {
+  //   const date = new Date();
+  //   document.getElementById('time-display').innerHTML = date.getSeconds();
+  // }
+
+  // setInterval(secondIncrement, 1000);
+
+//"How do I show current hour, current minute, current second in one line?"
+// const date = new Date();
+// var hours = date.getHours();
+// var minutes = date.getMinutes();
+// var seconds = date.getSeconds();
+// var strTime = hours + ":" + minutes + ":" + seconds;
+// document.getElementById('time-display').innerHTML = strTime;
+
+//"How do I show get seconds to increment in the string?" 
+    // TRY TO UPDATE "SECONDS" --> DOESN'T WORK
+    // function secondIncrement() {
+    //   seconds = date.getSeconds();
+    //   console.log('something')
+    // }
+
+    // setInterval(secondIncrement, 1000);
+
+    //TRY TO UPDATE strTIME 
+    function timeUpdate() {
+      const date = new Date();
+      var ampm;
+      var hours = date.getHours();
+      //add leading zero for hours
+      if (hours < 10) {
+        hours = hours.toString().padStart(2, '0');
+      }
+      var minutes = date.getMinutes();
+      //add leading zero for minutes
+      if (minutes < 10) {
+        minutes = minutes.toString().padStart(2, '0');
+      }
+      var seconds = date.getSeconds();
+      //add leading zero for seconds
+      if (seconds < 10) {
+        seconds = seconds.toString().padStart(2, '0');
+      }
+      ampm = hours >= 12 ? "PM" : "AM" 
+      var strTime = hours + ":" + minutes + ":" + seconds + " " + ampm;
+      document.getElementById('time-display').innerHTML = strTime;
+    }
+
+    setInterval(timeUpdate, 1000)
+    
+//What is the timeformat of .getHours, .getMinutes., getSeconds?
+    //Does not show leading zero for single digit numbers
+
+//How do you add '0' for single digit returns?
+  //https://hardiquedasore.medium.com/simplest-way-to-add-a-leading-zero-to-a-number-in-javascript-b8724749486f
+
+
+// Function from SO 
+// function formatAMPM(date) {
+//   var hours = date.getHours();
+//   var minutes = date.getMinutes();
+//   var seconds = date.getSeconds();
+//   var ampm = hours >= 12 ? 'PM' : 'AM';
+//   hours = hours % 12;
+//   hours = hours ? hours : 12; // the hour '0' should be '12'
+//   minutes = minutes < 10 ? '0'+minutes : minutes;
+//   var strTime = hours + ':' + minutes + ':' + seconds + " " + ampm;
+//   document.getElementById("time-display").innerHTML = strTime
 // }
-// getSecs(new Date);
-// function incrementSeconds() {
-//   seconds++
-  
-// }
-// setInterval(incrementSeconds, 1000);
-
-// getSecond(new Date)
-
-
-// setInterval(() => {
-//   clearInterval(incrementSecond)
-// }, 3000);˜
