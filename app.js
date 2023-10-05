@@ -57,7 +57,7 @@
 var dayStr;
 
 var date = new Date();
-
+var year = date.getFullYear() 
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 var day = date.getDate();
 day = days[day]; //convert interger day to human readable day
@@ -90,10 +90,10 @@ function nthNumber(number) {
 suffix = nthNumber(date)
 
 //"How can I get a year to show up underneath the time?"
-var year = date.getFullYear() // date.getFullYear() is not a function
+// var year = date.getFullYear() // date.getFullYear() is not a function
 
 //"How do I string together day, month, date, year in one line?"
-dayStr = day + ", " + month + " " + date + suffix + year
+dayStr = day + ", " + month + " " + date + suffix + " " + year
 document.getElementById('date-display').innerHTML = dayStr;
 
 
