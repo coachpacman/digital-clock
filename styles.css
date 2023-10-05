@@ -1,0 +1,15 @@
+body {
+  background-color: #686868;
+  color: white;
+  display: block;
+  text-align: center;
+  font-weight: bold;
+}
+
+#time-display {
+  font-size: 120px;
+}
+
+#date-display {
+  font-size: 60px
+}
