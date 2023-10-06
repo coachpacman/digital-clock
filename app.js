@@ -30,10 +30,19 @@
       const date = new Date();
       var ampm;
       var hours = date.getHours();
+
+      ampm = hours >= 12 ? "PM" : "AM" 
+      //format for non-military time
+      if (hours % 12 >= 1) {
+        hours = hours % 12;
+      }
+      
       //add leading zero for hours
       if (hours < 10) {
         hours = hours.toString().padStart(2, '0');
       }
+
+      
       var minutes = date.getMinutes();
       //add leading zero for minutes
       if (minutes < 10) {
@@ -44,7 +53,7 @@
       if (seconds < 10) {
         seconds = seconds.toString().padStart(2, '0');
       }
-      ampm = hours >= 12 ? "PM" : "AM" 
+      
       var strTime = hours + ":" + minutes + ":" + seconds + " " + ampm;
       document.getElementById('time-display').innerHTML = strTime;
     }
