@@ -28,10 +28,10 @@
 
     function timeUpdate() {
       const date = new Date();
-      var ampm;
       var hours = date.getHours();
-
+      var ampm;
       ampm = hours >= 12 ? "PM" : "AM" 
+      
       //format for non-military time
       if (hours % 12 >= 1) {
         hours = hours % 12;
@@ -42,12 +42,12 @@
         hours = hours.toString().padStart(2, '0');
       }
 
-      
-      var minutes = date.getMinutes();
+      var minutes = date.getMinutes();      
       //add leading zero for minutes
       if (minutes < 10) {
         minutes = minutes.toString().padStart(2, '0');
       }
+      
       var seconds = date.getSeconds();
       //add leading zero for seconds
       if (seconds < 10) {
@@ -59,7 +59,12 @@
     }
     timeUpdate(); // call function so it shows time on opening page
     setInterval(timeUpdate, 1000)
-    
+
+    // function changeFormat() {
+    //   console.log(document.getElementById('time-display').innerText)
+    // }
+
+    // changeFormat();
 //"How can I get my name to show up underneath the time?"
   //document.getElementById('date-display').innerHTML = "Tim"
 //"How can I get a day to show up underneath the time?"
