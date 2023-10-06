@@ -24,7 +24,8 @@
 
     // setInterval(secondIncrement, 1000);
 
-    //TRY TO UPDATE strTIME 
+    //TRY TO UPDATE strTIME     
+
     function timeUpdate() {
       const date = new Date();
       var ampm;
@@ -47,7 +48,7 @@
       var strTime = hours + ":" + minutes + ":" + seconds + " " + ampm;
       document.getElementById('time-display').innerHTML = strTime;
     }
-
+    timeUpdate(); // call function so it shows time on opening page
     setInterval(timeUpdate, 1000)
     
 //"How can I get my name to show up underneath the time?"
