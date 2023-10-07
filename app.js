@@ -3,7 +3,7 @@ const d = new Date();
 var date = d.getDate();
 var hours = d.getHours();
 var ampm;
-ampm = hours >= 12 ? "PM" : "AM" 
+ampm = hours > 12 ? "PM" : "AM" 
 
 function timeUpdate() { 
   var n = new Date();
@@ -39,12 +39,15 @@ function timeToggle() {
     console.log('a')
   } else {
     hours = d.getHours();
+    if (hours === 0) { //account for the midnight hour
+      hours = 12;
+    }
     timeIsInMilitaryTime = true;
     console.log('b')
   }
 }
 
-// timeToggle(); // trying to make the default time be non-military
+timeToggle(); // trying to make the default time be non-military
 timeUpdate(); // call function so it shows time on opening page
 
 
