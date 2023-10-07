@@ -36,6 +36,7 @@ function timeToggle() {
     //format for non-military time
     hours = hours % 12; //convert to non-military time
     timeIsInMilitaryTime = false; //change flag
+    document.getElementById("toggle-button").innerHTML = "Change to 24-hour clock"
     console.log('a')
   } else {
     hours = d.getHours();
@@ -43,6 +44,7 @@ function timeToggle() {
       hours = 12;
     }
     timeIsInMilitaryTime = true;
+    document.getElementById("toggle-button").innerHTML = "Change to 12-hour clock"
     console.log('b')
   }
 }
