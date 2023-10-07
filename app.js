@@ -44,15 +44,16 @@ function timeToggle() {
   }
 }
 
+// timeToggle(); // trying to make the default time be non-military
 timeUpdate(); // call function so it shows time on opening page
-timeToggle(); // trying to make the default time be non-military
+
 
 var dayStr;
 // var date = new Date();
 var year = d.getFullYear() 
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-// var day = d.getDate();
-day = days[date]; //convert interger day to human readable day
+var day = d.getDay();
+day = days[day]; //convert interger day to human readable day
 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 var month = d.getMonth();
 month = months[month] //convert interger month to human readable month
@@ -89,9 +90,6 @@ document.getElementById('date-display').innerHTML = dayStr;
 //How do you get one function to stop and then trigger the next function?
 //One function for getting time; one function for converting time to military or non-military time
 //Global timeIsInMilitaryTime; variable
-
-
-
 
 // function militaryTimeUpdate() {
 //   const date = new Date();
