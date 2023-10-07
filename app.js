@@ -1,82 +1,63 @@
-function timeUpdate() {
-  const date = new Date();
-  var hours = date.getHours();
-  var ampm;
-  ampm = hours >= 12 ? "PM" : "AM" 
+var timeIsInMilitaryTime = false;
+const d = new Date();
+var date = d.getDate();
+var hours = d.getHours();
+var ampm;
+ampm = hours >= 12 ? "PM" : "AM" 
 
-  //format for non-military time
-  if (hours % 12 >= 1) {
-    hours = hours % 12;
-  }
+function timeUpdate() { 
+  var n = new Date();
 
   //add leading zero for hours
   if (hours < 10) {
     hours = hours.toString().padStart(2, '0');
   }
 
-  var minutes = date.getMinutes();      
+  var minutes = n.getMinutes();      
   //add leading zero for minutes
   if (minutes < 10) {
     minutes = minutes.toString().padStart(2, '0');
   }
 
-  var seconds = date.getSeconds();
+  var seconds = n.getSeconds();
   //add leading zero for seconds
   if (seconds < 10) {
     seconds = seconds.toString().padStart(2, '0');
   }
-  
+  // timeToggle();
   var strTime = hours + ":" + minutes + ":" + seconds + " " + ampm;
   document.getElementById('time-display').innerHTML = strTime;
   setInterval(timeUpdate, 1000)
 
-  
 }
 
-// timeUpdate(); // call function so it shows time on opening page
-
-function militaryTimeUpdate() {
-  const date = new Date();
-  var hours = date.getHours();
-  var ampm;
-  ampm = hours >= 12 ? "PM" : "AM" 
-
-  //add leading zero for hours
-  if (hours < 10) {
-    hours = hours.toString().padStart(2, '0');
+function timeToggle() {
+  if (timeIsInMilitaryTime === true) {
+    //format for non-military time
+    hours = hours % 12; //convert to non-military time
+    timeIsInMilitaryTime = false; //change flag
+    console.log('a')
+  } else {
+    hours = d.getHours();
+    timeIsInMilitaryTime = true;
+    console.log('b')
   }
-
-  var minutes = date.getMinutes();      
-  //add leading zero for minutes
-  if (minutes < 10) {
-    minutes = minutes.toString().padStart(2, '0');
-  }
-
-  var seconds = date.getSeconds();
-  //add leading zero for seconds
-  if (seconds < 10) {
-    seconds = seconds.toString().padStart(2, '0');
-  }
-
-  var strTime = hours + ":" + minutes + ":" + seconds + " " + ampm;
-
-  document.getElementById('time-display').innerHTML = strTime;
-  setInterval(militaryTimeUpdate, 1000)
 }
 
-
+timeUpdate(); // call function so it shows time on opening page
+timeToggle(); // trying to make the default time be non-military
 
 var dayStr;
-var date = new Date();
-var year = date.getFullYear() 
+// var date = new Date();
+var year = d.getFullYear() 
 var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-var day = date.getDate();
-day = days[day]; //convert interger day to human readable day
+// var day = d.getDate();
+day = days[date]; //convert interger day to human readable day
 var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-var month = date.getMonth();
+var month = d.getMonth();
 month = months[month] //convert interger month to human readable month
 
-var date = date.getDate();
+// var date = date.getDate();
 
 var suffix;
 function nthNumber(number) {
@@ -98,26 +79,6 @@ suffix = nthNumber(date)
 dayStr = day + ", " + month + " " + date + suffix + " " + year
 document.getElementById('date-display').innerHTML = dayStr;
 
-function timeToggle() {
-  var militaryTime;
-  if (militaryTime) {
-    militaryTimeUpdate();
-    console.log('militaryTimeUpdate ran', 'militaryTime = ', militaryTime)
-  } else {
-    timeUpdate();
-    console.log('timeUpdate ran', 'militaryTime = ', militaryTime)
-    militaryTime = false;
-  }
-}
-
-function alertOne() {
-  alert("alert 1") 
-}
-
-function alertTwo() {
-  alert("alert 2") 
-}
-
 //Add button onto page
 //Button triggers alert function
 //Add second button onto page
@@ -126,3 +87,37 @@ function alertTwo() {
 //Buttons in one line
 //When one function is running, how do you end the other function?
 //How do you get one function to stop and then trigger the next function?
+//One function for getting time; one function for converting time to military or non-military time
+//Global timeIsInMilitaryTime; variable
+
+
+
+
+// function militaryTimeUpdate() {
+//   const date = new Date();
+//   var hours = date.getHours();
+//   var ampm;
+//   ampm = hours >= 12 ? "PM" : "AM" 
+
+//   //add leading zero for hours
+//   if (hours < 10) {
+//     hours = hours.toString().padStart(2, '0');
+//   }
+
+//   var minutes = date.getMinutes();      
+//   //add leading zero for minutes
+//   if (minutes < 10) {
+//     minutes = minutes.toString().padStart(2, '0');
+//   }
+
+//   var seconds = date.getSeconds();
+//   //add leading zero for seconds
+//   if (seconds < 10) {
+//     seconds = seconds.toString().padStart(2, '0');
+//   }
+
+//   var strTime = hours + ":" + minutes + ":" + seconds + " " + ampm;
+
+//   document.getElementById('time-display').innerHTML = strTime;
+//   setInterval(militaryTimeUpdate, 1000)
+// }
