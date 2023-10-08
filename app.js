@@ -8,6 +8,21 @@ ampm = hours > 12 ? "PM" : "AM"
 function timeUpdate() { 
   var n = new Date();
 
+  if (timeIsInMilitaryTime === true) {
+    //format for non-military time
+    hours = hours % 12; //convert to non-military time
+    timeIsInMilitaryTime = false; //change flag
+    document.getElementById("toggle-button").innerHTML = "Change to 24-hour clock"
+    console.log('a')
+  } else {
+    hours = d.getHours();
+    if (hours === 0) { //account for the midnight hour
+      hours = 12;
+    }
+    timeIsInMilitaryTime = true;
+    document.getElementById("toggle-button").innerHTML = "Change to 12-hour clock"
+    console.log('b')
+  }
   //add leading zero for hours
   if (hours < 10) {
     hours = hours.toString().padStart(2, '0');
@@ -31,25 +46,25 @@ function timeUpdate() {
 
 }
 
-function timeToggle() {
-  if (timeIsInMilitaryTime === true) {
-    //format for non-military time
-    hours = hours % 12; //convert to non-military time
-    timeIsInMilitaryTime = false; //change flag
-    document.getElementById("toggle-button").innerHTML = "Change to 24-hour clock"
-    console.log('a')
-  } else {
-    hours = d.getHours();
-    if (hours === 0) { //account for the midnight hour
-      hours = 12;
-    }
-    timeIsInMilitaryTime = true;
-    document.getElementById("toggle-button").innerHTML = "Change to 12-hour clock"
-    console.log('b')
-  }
-}
+// function timeToggle() {
+//   if (timeIsInMilitaryTime === true) {
+//     //format for non-military time
+//     hours = hours % 12; //convert to non-military time
+//     timeIsInMilitaryTime = false; //change flag
+//     document.getElementById("toggle-button").innerHTML = "Change to 24-hour clock"
+//     console.log('a')
+//   } else {
+//     hours = d.getHours();
+//     if (hours === 0) { //account for the midnight hour
+//       hours = 12;
+//     }
+//     timeIsInMilitaryTime = true;
+//     document.getElementById("toggle-button").innerHTML = "Change to 12-hour clock"
+//     console.log('b')
+//   }
+// }
 
-timeToggle(); // trying to make the default time be non-military
+// timeToggle(); // trying to make the default time be non-military
 timeUpdate(); // call function so it shows time on opening page
 
 
