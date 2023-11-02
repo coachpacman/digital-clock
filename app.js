@@ -32,7 +32,7 @@ function timeUpdate() {
 
 function toggleTime() {
   if (timeIsInMilitaryTime === true) {
-    
+    hours = d.getHours();
     timeIsInMilitaryTime = false; //change flag
     document.getElementById("toggle-button").innerHTML = "Change to 12-hour clock"
     console.log('a')
